@@ -4,4 +4,9 @@ public class Game {
         // todo
         return 4;
     }
+
+    public int generateNumber() {
+        //todo
+        return 2;
+    }
 }
