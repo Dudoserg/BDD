@@ -13,3 +13,8 @@ Feature: gamesina
     Given  I have my Game class
     When I use 'generateNumber' method
     Then The result  2 or 4
+
+  Scenario:
+    Given  I have my Game class
+    When I use 'generateNumber' method
+    Then The result  2 or 4 with probability 90 and 10
