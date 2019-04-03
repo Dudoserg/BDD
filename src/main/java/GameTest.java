@@ -5,6 +5,11 @@ import cucumber.api.java.en.When;
 
 public class GameTest {
     Game game ;
+
+    int firstNum;
+    int secondNum;
+    int resultAdd;
+
     @Given("^I have my Game class$")
     public void iHaveMyGameClass() {
         this.game = new Game();
@@ -12,15 +17,17 @@ public class GameTest {
 
     @When("^I have entered (\\d+) as first operand$")
     public void iHaveEnteredAsFirstOperand(int arg0) {
+        this.firstNum = arg0;
     }
 
     @And("^I have entered (\\d+) as second operand$")
     public void iHaveEnteredAsSecondOperand(int arg0) {
+        this.secondNum = arg0;
     }
 
     @And("^I use 'add' method$")
     public void iUseAddMethod() {
-
+        this.resultAdd = this.game.add(this.firstNum, this.secondNum);
     }
 
     @Then("^The result should be (\\d+)$")
