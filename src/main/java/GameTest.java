@@ -83,10 +83,11 @@ public class GameTest {
         this.game = new Game(arg0);
     }
 
+    int gameSize;
 
     @When("^I get gameSize$")
     public void iGetGameSize() {
-
+        this.gameSize = this.game.getSize();
     }
 
     @Then("^The gameSize  should be (\\d+)$")
