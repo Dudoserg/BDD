@@ -34,6 +34,6 @@ public class GameTest {
 
     @Then("^The result should be (\\d+)$")
     public void theResultShouldBe(int arg0) {
-
+        Assert.assertEquals(arg0, this.resultAdd, 1e-5);
     }
 }
