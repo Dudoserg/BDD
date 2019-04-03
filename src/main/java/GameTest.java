@@ -67,14 +67,15 @@ public class GameTest {
             if( num == 4 )
                 count_4++;
         }
-        double percent_2 = ((double) count_2) / iterations;
-        double percent_4 = ((double)count_4) / iterations;
-        double epsilon = 0.01;
+        percent_2 = ((double) count_2) / iterations;
+        percent_4 = ((double)count_4) / iterations;
+
     }
 
     @Then("^The result  (\\d+) or (\\d+) with probability (\\d+) and (\\d+)$")
     public void theResultOrWithProbabilityAnd(int arg0, int arg1, int arg2, int arg3) {
-
+        Assert.assertTrue( (percent_2 > 0.9 - epsilon) &&  (percent_2 < 0.9 + epsilon)
+                &&  (percent_4 > 0.1 - epsilon) &&  (percent_4 < 0.4 + epsilon) );
     }
 }
 
