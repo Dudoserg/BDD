@@ -16,5 +16,5 @@ Feature: gamesina
 
   Scenario:
     Given  I have my Game class
-    When I use 'generateNumber' method
+    When I use 'generateNumber' method 100000 raz
     Then The result  2 or 4 with probability 90 and 10

@@ -50,4 +50,31 @@ public class GameTest {
     public void theResultOr(int arg0, int arg1) {
         Assert.assertTrue(this.result_generateNumber == 2 || this.result_generateNumber == 4);
     }
+
+
+    double percent_2 ;
+    double percent_4 ;
+    double epsilon = 0.01;
+
+    @When("^I use 'generateNumber' method (\\d+) raz$")
+    public void iUseGenerateNumberMethodRaz(int iterations) {
+        int count_2 = 0;
+        int count_4 = 0;
+        for(int i = 0 ; i < iterations; i++){
+            int num = game.generateNumber();
+            if( num == 2 )
+                count_2++;
+            if( num == 4 )
+                count_4++;
+        }
+        double percent_2 = ((double) count_2) / iterations;
+        double percent_4 = ((double)count_4) / iterations;
+        double epsilon = 0.01;
+    }
+
+    @Then("^The result  (\\d+) or (\\d+) with probability (\\d+) and (\\d+)$")
+    public void theResultOrWithProbabilityAnd(int arg0, int arg1, int arg2, int arg3) {
+
+    }
 }
+
