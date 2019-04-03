@@ -7,4 +7,4 @@ Feature: gamesina
     When I have entered 2 as first operand
     And I have entered 2 as second operand
     And I use 'add' method
-    Then The result should be 2
+    Then The result should be 4
