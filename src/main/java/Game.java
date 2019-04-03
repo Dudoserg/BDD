@@ -6,7 +6,9 @@ public class Game {
     }
 
     public int generateNumber() {
-        //todo
+        double rand =  Math.random();
+        if(rand < 0.1)
+            return 4;
         return 2;
     }
 }
