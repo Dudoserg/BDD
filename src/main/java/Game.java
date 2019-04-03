@@ -24,4 +24,7 @@ public class Game {
         this.size = 4;
     }
 
+    public int getSize() {
+        return this.size;
+    }
 }
