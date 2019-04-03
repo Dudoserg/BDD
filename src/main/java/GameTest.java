@@ -44,4 +44,10 @@ public class GameTest {
     public void iUseGenerateNumberMethod() {
         this.result_generateNumber = this.game.generateNumber();
     }
+
+
+    @Then("^The result  (\\d+) or (\\d+)$")
+    public void theResultOr(int arg0, int arg1) {
+        Assert.assertTrue(this.result_generateNumber == 2 || this.result_generateNumber == 4);
+    }
 }

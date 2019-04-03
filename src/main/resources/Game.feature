@@ -12,4 +12,4 @@ Feature: gamesina
   Scenario:
     Given  I have my Game class
     When I use 'generateNumber' method
-    Then The result should be 2 or 4 with a probability of 90% \ 10%
+    Then The result  2 or 4
