@@ -77,5 +77,19 @@ public class GameTest {
         Assert.assertTrue( (percent_2 > 0.9 - epsilon) &&  (percent_2 < 0.9 + epsilon)
                 &&  (percent_4 > 0.1 - epsilon) &&  (percent_4 < 0.4 + epsilon) );
     }
+
+    @Given("^I have my Game class with param (\\d+)$")
+    public void iHaveMyGameClassWithParam(int arg0) {
+        
+    }
+
+    @When("^I get gameSize$")
+    public void iGetGameSize() {
+        
+    }
+
+    @Then("^The gameSize  should be (\\d+)$")
+    public void theGameSizeShouldBe(int arg0) {
+    }
 }
 

@@ -18,3 +18,8 @@ Feature: gamesina
     Given  I have my Game class
     When I use 'generateNumber' method 100000 raz
     Then The result  2 or 4 with probability 90 and 10
+
+  Scenario:
+    Given  I have my Game class with param 4
+    When I get gameSize
+    Then The gameSize  should be 4
