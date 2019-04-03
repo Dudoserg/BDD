@@ -11,6 +11,8 @@ public class GameTest {
     int secondNum;
     int resultAdd;
 
+    int result_generateNumber;
+
     @Given("^I have my Game class$")
     public void iHaveMyGameClass() {
         this.game = new Game();
@@ -35,5 +37,11 @@ public class GameTest {
     @Then("^The result should be (\\d+)$")
     public void theResultShouldBe(int arg0) {
         Assert.assertEquals(arg0, this.resultAdd, 1e-5);
+    }
+
+
+    @When("^I use 'generateNumber' method$")
+    public void iUseGenerateNumberMethod() {
+        this.result_generateNumber = this.game.generateNumber();
     }
 }
