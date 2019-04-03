@@ -80,12 +80,13 @@ public class GameTest {
 
     @Given("^I have my Game class with param (\\d+)$")
     public void iHaveMyGameClassWithParam(int arg0) {
-        
+        this.game = new Game(arg0);
     }
+
 
     @When("^I get gameSize$")
     public void iGetGameSize() {
-        
+
     }
 
     @Then("^The gameSize  should be (\\d+)$")
