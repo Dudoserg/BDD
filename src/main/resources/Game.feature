@@ -41,3 +41,9 @@ Feature: gamesina
     When I set elem 4 with index 0 0
     And I call 'findFreePlace' method 100000 times
     Then The result must not contain an element with index 0 0
+#findFreePlace2
+  Scenario:
+    Given  I have my Game class with param 4
+    When I have initialized all the elements of the matrix except the element with the index 2 2
+    And I call 'findFreePlace' method 100000 times
+    Then The result should always return an item with index 2 2
