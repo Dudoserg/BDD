@@ -90,9 +90,13 @@ public class GameTest {
         this.gameSize = this.game.getSize();
     }
 
-    @Then("^The gameSize  should be (\\d+)$")
+
+    @Then("^The gameSize should be (\\d+)$")
     public void theGameSizeShouldBe(int arg0) {
         Assert.assertEquals(this.gameSize, arg0);
     }
+
+
+
 }
 
