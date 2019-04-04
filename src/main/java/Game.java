@@ -130,6 +130,15 @@ public class Game {
     }
 
 
-
+    public boolean left() {
+        // todo
+        this.arr = new int [][]{
+                {16,8,0,0},
+                {2,0,0,0},
+                {4,0,0,0},
+                {0,0,0,0},
+        };
+        return true;
+    }
 
 }
