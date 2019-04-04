@@ -39,4 +39,12 @@ public class Game {
     public int[][] getArr() {
         return this.arr;
     }
+
+    public void setElem(int indexI, int indexJ, int elem) {
+        this.arr[indexI][indexJ] = elem;
+    }
+
+    public int getElem(int indexI, int indexJ) {
+        return this.arr[indexI][indexJ];
+    }
 }
