@@ -96,6 +96,7 @@ public class GameTest {
         Assert.assertEquals(this.gameSize, arg0);
     }
 
+//# initArray
 int [][] gameMatrix;
     @When("^I get array from Game$")
     public void iGetArrayFromGame() {
@@ -105,6 +106,23 @@ int [][] gameMatrix;
     @Then("^The array should be null$")
     public void theArrayShouldBeNull() {
         Assert.assertNotNull( this.gameMatrix );
+    }
+
+//#setElem #getElem
+int resultGetElem;
+    @When("^I set elem (\\d+) with index (\\d+) (\\d+)$")
+    public void iSetElemWithIndex(int elem, int indexI, int indexJ) {
+        this.game.setElem(indexI,indexJ,elem);
+    }
+
+    @And("^I get elem with index (\\d+) (\\d+)$")
+    public void iGetElemWithIndex(int indexI, int indexJ) {
+        this.resultGetElem = this.game.getElem(indexI,indexJ);
+    }
+
+    @Then("^The result getElem should be (\\d+)$")
+    public void theResultGetElemShouldBe(int elem) {
+        Assert.assertEquals(this.resultGetElem , elem);
     }
 }
 
