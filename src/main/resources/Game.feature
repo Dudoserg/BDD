@@ -84,10 +84,23 @@ Feature: gamesina
     When I read matrix from "matrix_1.txt"
     And I set the game matrix in accordance with the read matrix
     # читаем и запоминаем результирующую матрицу
-    And I read matrix from "matrix_1_testMotion.txt"
+    And I read matrix from "matrix_1_testMotion(0.0).txt"
     # двигаем поле влево
     And I call 'motionElem' method with param 0 -1
     # получаем матрицу из игрового класса
     And I call 'getArr'
     # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
-    Then the matrix must match the matrix from the file "matrix_1_testMotion.txt"
+    Then the matrix must match the matrix from the file "matrix_1_testMotion(0.0).txt"
+#Left
+  Scenario:
+    Given  I have my Game class with param 4
+    When I read matrix from "motionTest1(0 -1 0 2).txt"
+    And I set the game matrix in accordance with the read matrix
+    # читаем и запоминаем результирующую матрицу
+    And I read matrix from "motionTest1(0 -1 0 2)out.txt"
+    # двигаем поле влево
+    And I call 'motionElem' method with param 0 -1 0 2
+    # получаем матрицу из игрового класса
+    And I call 'getArr'
+    # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
+    Then the matrix must match the matrix from the file "motionTest1(0 -1 0 2)out.txt"

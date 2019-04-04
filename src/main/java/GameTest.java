@@ -312,9 +312,15 @@ int matrixGetArr[][];
     }
 
 
-    @And("^I call 'motionElem' method with param (\\d+) -(\\d+)$")
+    @And("^I call 'motionElem' method with param (\\d+) (-?\\d+)$")
     public void iCallMotionElemMethodWithParam(int rowDirection, int columnDirection) {
-        game.motionElem(rowDirection, -1, 0, 0);
+        game.motionElem(rowDirection, columnDirection, 0, 0);
+        System.out.println();
+    }
+
+    @And("^I call 'motionElem' method with param (-?\\d+) (-?\\d+) (\\d+) (\\d+)$")
+    public void iCallMotionElemMethodWithParam(int rowDirection, int columnDirection, int arg2, int arg3) {
+        game.motionElem(rowDirection, columnDirection, arg2, arg3);
         System.out.println();
     }
 }
