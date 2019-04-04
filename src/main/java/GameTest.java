@@ -173,5 +173,15 @@ int resultGetElem;
         }
         Assert.assertFalse(flagAnotherElem);
     }
+
+
+    @When("^I call 'rand' method (\\d+) times in the range from (\\d+) to (\\d+)$")
+    public void iCallRandMethodTimesInTheRangeFromTo(int arg0, int arg1, int arg2) {
+        
+    }
+
+    @Then("^The probability of each generated number should be (\\d+) to (\\d+) and epsilon (\\d+) to (\\d+)$")
+    public void theProbabilityOfEachGeneratedNumberShouldBeToAndEpsilonTo(int arg0, int arg1, int arg2, int arg3) {
+    }
 }
 

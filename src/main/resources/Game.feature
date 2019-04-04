@@ -47,3 +47,8 @@ Feature: gamesina
     When I have initialized all the elements of the matrix except the element with the index 2 2
     And I call 'findFreePlace' method 100000 times
     Then The result should always return an item with index 2 2
+#rand
+  Scenario:
+    Given  I have my Game class with param 4
+    When I call 'rand' method 1000000 times in the range from 0 to 10
+    Then The probability of each generated number should be 1 to 10 and epsilon 1 to 100

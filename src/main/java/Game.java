@@ -115,4 +115,6 @@ public class Game {
         int rand = new Random().nextInt(freePlace.size());
         return new int[]{freePlace.get(rand).get(0), freePlace.get(rand).get(1)};
     }
+
+
 }
