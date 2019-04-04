@@ -191,3 +191,35 @@ Feature: gamesina
     And I call 'left' method
     # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
     Then The result of 'left' method should be "false"
+##GameOver2
+  Scenario:
+    Given  I have my Game class with param 4
+    When I read matrix from "matrix_1.txt"
+    And I set the game matrix in accordance with the read matrix
+    # двигаем поле влево
+    And I call 'left' method
+    # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
+    Then The result of 'left' method should be "true"
+
+  Scenario:
+    Given  I have my Game class with param 4
+    When I read matrix from "matrix_end.txt"
+    And I set the game matrix in accordance with the read matrix
+    # двигаем поле влево
+    And I call 'left' method
+    And I call 'right' method
+    And I call 'down' method
+    And I call 'up' method
+    # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
+    Then All methods returned "false"
+  Scenario:
+    Given  I have my Game class with param 4
+    When I read matrix from "matrix_end_2.txt"
+    And I set the game matrix in accordance with the read matrix
+    # двигаем поле влево
+    And I call 'left' method
+    And I call 'right' method
+    And I call 'down' method
+    And I call 'up' method
+    # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
+    Then at least one method will return "true"

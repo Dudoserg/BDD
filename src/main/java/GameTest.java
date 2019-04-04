@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class GameTest {
-    Game game ;
+    Game game;
 
     int firstNum;
     int secondNum;
@@ -67,30 +67,30 @@ public class GameTest {
     }
 
 
-    double percent_2 ;
-    double percent_4 ;
+    double percent_2;
+    double percent_4;
     double epsilon = 0.01;
 
     @When("^I use 'generateNumber' method (\\d+) raz$")
     public void iUseGenerateNumberMethodRaz(int iterations) {
         int count_2 = 0;
         int count_4 = 0;
-        for(int i = 0 ; i < iterations; i++){
+        for (int i = 0; i < iterations; i++) {
             int num = game.generateNumber();
-            if( num == 2 )
+            if (num == 2)
                 count_2++;
-            if( num == 4 )
+            if (num == 4)
                 count_4++;
         }
         percent_2 = ((double) count_2) / iterations;
-        percent_4 = ((double)count_4) / iterations;
+        percent_4 = ((double) count_4) / iterations;
 
     }
 
     @Then("^The result  (\\d+) or (\\d+) with probability (\\d+) and (\\d+)$")
     public void theResultOrWithProbabilityAnd(int arg0, int arg1, int arg2, int arg3) {
-        Assert.assertTrue( (percent_2 > 0.9 - epsilon) &&  (percent_2 < 0.9 + epsilon)
-                &&  (percent_4 > 0.1 - epsilon) &&  (percent_4 < 0.4 + epsilon) );
+        Assert.assertTrue((percent_2 > 0.9 - epsilon) && (percent_2 < 0.9 + epsilon)
+                && (percent_4 > 0.1 - epsilon) && (percent_4 < 0.4 + epsilon));
     }
 
     @Given("^I have my Game class with param (\\d+)$")
@@ -111,8 +111,9 @@ public class GameTest {
         Assert.assertEquals(this.gameSize, arg0);
     }
 
-//# initArray
-int [][] gameMatrix;
+    //# initArray
+    int[][] gameMatrix;
+
     @When("^I get array from Game$")
     public void iGetArrayFromGame() {
         this.gameMatrix = this.game.getArr();
@@ -120,33 +121,35 @@ int [][] gameMatrix;
 
     @Then("^The array should be null$")
     public void theArrayShouldBeNull() {
-        Assert.assertNotNull( this.gameMatrix );
+        Assert.assertNotNull(this.gameMatrix);
     }
 
-//#setElem #getElem
-int resultGetElem;
+    //#setElem #getElem
+    int resultGetElem;
+
     @When("^I set elem (\\d+) with index (\\d+) (\\d+)$")
     public void iSetElemWithIndex(int elem, int indexI, int indexJ) {
-        this.game.setElem(indexI,indexJ,elem);
+        this.game.setElem(indexI, indexJ, elem);
     }
 
     @And("^I get elem with index (\\d+) (\\d+)$")
     public void iGetElemWithIndex(int indexI, int indexJ) {
-        this.resultGetElem = this.game.getElem(indexI,indexJ);
+        this.resultGetElem = this.game.getElem(indexI, indexJ);
     }
 
     @Then("^The result getElem should be (\\d+)$")
     public void theResultGetElemShouldBe(int elem) {
-        Assert.assertEquals(this.resultGetElem , elem);
+        Assert.assertEquals(this.resultGetElem, elem);
     }
 
 
-//#findFreePlace
+    //#findFreePlace
     ArrayList<int[]> resultFindFreePlace;
+
     @And("^I call 'findFreePlace' method (\\d+) times$")
     public void iCallFindFreePlaceMethodTimes(int iteration) {
         this.resultFindFreePlace = new ArrayList<>();
-        for(int i = 0 ; i < 10000; i++){
+        for (int i = 0; i < 10000; i++) {
             int result[] = game.findFreePlace();
             this.resultFindFreePlace.add(result);
         }
@@ -156,30 +159,31 @@ int resultGetElem;
     @Then("^The result must not contain an element with index (\\d+) (\\d+)$")
     public void theResultMustNotContainAnElementWithIndex(int indexI, int indexJ) {
         boolean flagContain = false;
-        for(int i = 0 ; i < resultFindFreePlace.size(); i++){
-            if(this.resultFindFreePlace.get(i)[0] == indexI && this.resultFindFreePlace.get(i)[1] == indexJ){
+        for (int i = 0; i < resultFindFreePlace.size(); i++) {
+            if (this.resultFindFreePlace.get(i)[0] == indexI && this.resultFindFreePlace.get(i)[1] == indexJ) {
                 flagContain = true;
                 break;
             }
         }
         Assert.assertFalse(flagContain);
     }
-//#findFreePlace2
+
+    //#findFreePlace2
     @When("^I have initialized all the elements of the matrix except the element with the index (\\d+) (\\d+)$")
     public void iHaveInitializedAllTheElementsOfTheMatrixExceptTheElementWithTheIndex(int arg0, int arg1) {
-        for(int i = 0; i < this.game.getSize(); i++){
-            for(int j = 0 ; j < this.game.getSize(); j++){
-                this.game.setElem(i,j, 2 );
+        for (int i = 0; i < this.game.getSize(); i++) {
+            for (int j = 0; j < this.game.getSize(); j++) {
+                this.game.setElem(i, j, 2);
             }
         }
-        this.game.setElem(arg0,arg1,0);
+        this.game.setElem(arg0, arg1, 0);
     }
 
     @Then("^The result should always return an item with index (\\d+) (\\d+)$")
     public void theResultShouldAlwaysReturnAnItemWithIndex(int arg0, int arg1) {
         boolean flagAnotherElem = false;
-        for(int i = 0 ; i < resultFindFreePlace.size(); i++){
-            if(this.resultFindFreePlace.get(i)[0] != arg0 || this.resultFindFreePlace.get(i)[1] != arg1){
+        for (int i = 0; i < resultFindFreePlace.size(); i++) {
+            if (this.resultFindFreePlace.get(i)[0] != arg0 || this.resultFindFreePlace.get(i)[1] != arg1) {
                 flagAnotherElem = true;
                 break;
             }
@@ -187,38 +191,39 @@ int resultGetElem;
         Assert.assertFalse(flagAnotherElem);
     }
 
-//#rand
+    //#rand
     int resultRand[];
     int countIterationRand;
+
     @When("^I call 'rand' method (\\d+) times in the range from (\\d+) to (\\d+)$")
     public void iCallRandMethodTimesInTheRangeFromTo(int iteration, int min, int max) {
         this.resultRand = new int[max - min];
         countIterationRand = iteration;
-        for(int i = 0; i < countIterationRand; i++){
-            resultRand[game.rand(0,10)]++;
+        for (int i = 0; i < countIterationRand; i++) {
+            resultRand[game.rand(0, 10)]++;
         }
     }
-
 
 
     @Then("^The probability of each generated number should be (\\d+) to (\\d+) and epsilon (\\d+) to (\\d+)$")
     public void theProbabilityOfEachGeneratedNumberShouldBeToAndEpsilonTo(int arg0, int arg1, int eps1, int eps2) {
-        double eps = (double)eps1 / eps2;
+        double eps = (double) eps1 / eps2;
         double prob = (double) arg0 / arg1;
-        for(int i = 0 ; i < 10; i++){
-            Assert.assertTrue(( ((double) resultRand[i] / countIterationRand) > prob - eps)
-                    && (  ((double) resultRand[i] / countIterationRand) < prob + eps) );
+        for (int i = 0; i < 10; i++) {
+            Assert.assertTrue((((double) resultRand[i] / countIterationRand) > prob - eps)
+                    && (((double) resultRand[i] / countIterationRand) < prob + eps));
         }
     }
 
-//# getARr
-int matrixRead[][];
-int matrixGetArr[][];
-    public int [][] readMatrix(String nameFile) throws URISyntaxException {
+    //# getARr
+    int matrixRead[][];
+    int matrixGetArr[][];
+
+    public int[][] readMatrix(String nameFile) throws URISyntaxException {
         URL resource = Main.class.getResource("matrix/" + nameFile);
         //System.out.println(Paths.get(resource.toURI()).toFile());
 
-        int matrix[][] = new int [this.game.getSize()][this.game.getSize()];
+        int matrix[][] = new int[this.game.getSize()][this.game.getSize()];
 
         Scanner scanner = null;
         try {
@@ -231,12 +236,12 @@ int matrixGetArr[][];
         String[] str;
 
         int indexLine = 0;
-        while ( scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             line = scanner.nextLine();
             // System.out.println(line);
             final int[] indexJ = {0};
-            int mas[] = Arrays.stream( line.split(" ")) .mapToInt(Integer::parseInt).toArray();
-            for(int i = 0 ; i < mas.length; i++){
+            int mas[] = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
+            for (int i = 0; i < mas.length; i++) {
                 matrix[indexLine][i] = mas[i];
             }
             indexLine++;
@@ -248,14 +253,14 @@ int matrixGetArr[][];
     public void iReadMatrixFrom(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         this.matrixRead = this.readMatrix(arg0);
-       // throw new PendingException();
+        // throw new PendingException();
     }
 
     @And("^I set the game matrix in accordance with the read matrix$")
     public void iSetTheGameMatrixInAccordanceWithTheReadMatrix() {
-        for(int i = 0 ; i < matrixRead.length; i++){
-            for(int j = 0 ; j < matrixRead[i].length; j++){
-                this.game.setElem(i,j, matrixRead[i][j]);
+        for (int i = 0; i < matrixRead.length; i++) {
+            for (int j = 0; j < matrixRead[i].length; j++) {
+                this.game.setElem(i, j, matrixRead[i][j]);
             }
         }
     }
@@ -270,24 +275,24 @@ int matrixGetArr[][];
     public void theMatrixMustMatchTheMatrixFromTheFile(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         Assert.assertArrayEquals(this.matrixRead, this.matrixGetArr);
-       // throw new PendingException();
+        // throw new PendingException();
     }
 
 
-
-//#left
+    //#left
     @And("^I call 'left' method$")
     public void iCallLeftMethod() {
         boolean flag = this.game.left();
+        this.resultLeft = flag;
     }
 
 
-///////////////////////////////////////////
+    ///////////////////////////////////////////
     @When("^I fill 'clearArray' the array with random numbers$")
     public void iFillClearArrayTheArrayWithRandomNumbers() {
-        for (int i = 0 ; i < this.game.getSize(); i++){
-            for(int j = 0 ; j < this.game.getSize(); j++){
-                this.game.setElemInArrayInactive(i,j, (int)(Math.random() * 2));
+        for (int i = 0; i < this.game.getSize(); i++) {
+            for (int j = 0; j < this.game.getSize(); j++) {
+                this.game.setElemInArrayInactive(i, j, (int) (Math.random() * 2));
             }
         }
     }
@@ -300,12 +305,12 @@ int matrixGetArr[][];
     @Then("^all array elements are (\\d+)$")
     public void allArrayElementsAre(int arg0) {
         boolean flagNotZero = false;
-        for (int i = 0 ; i < this.game.getSize(); i++){
-            for(int j = 0 ; j < this.game.getSize(); j++){
-               if( this.game.getElemInArrayInactive(i,j) != 0){
-                   flagNotZero = true;
-                   break;
-               }
+        for (int i = 0; i < this.game.getSize(); i++) {
+            for (int j = 0; j < this.game.getSize(); j++) {
+                if (this.game.getElemInArrayInactive(i, j) != 0) {
+                    flagNotZero = true;
+                    break;
+                }
             }
         }
         Assert.assertFalse(flagNotZero);
@@ -324,30 +329,59 @@ int matrixGetArr[][];
         //System.out.println();
     }
 
+    boolean resultRight;
+
     @And("^I call 'right' method$")
     public void iCallRightMethod() {
-        this.game.right();
+        this.resultRight = this.game.right();
     }
+
+    boolean resultUp;
 
     @And("^I call 'up' method$")
     public void iCallUpMethod() {
-        this.game.up();
+        this.resultUp = this.game.up();
 
     }
+
+    boolean resultDown;
 
     @And("^I call 'down' method$")
     public void iCallDownMethod() {
-        this.game.down();
+        this.resultDown = this.game.down();
     }
 
+    boolean resultLeft;
 
     @Then("^The result of 'left' method should be \"([^\"]*)\"$")
     public void theResultOfLeftMethodShouldBe(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        boolean result = this.game.left();
+
         boolean param = Boolean.valueOf(arg0);
-        Assert.assertEquals(result, param );
+        Assert.assertEquals(resultLeft, param);
         //throw new PendingException();
+    }
+
+    @Then("^All methods returned \"([^\"]*)\"$")
+    public void allMethodsReturned(String arg0) throws Throwable {
+
+        boolean param = Boolean.valueOf(arg0);
+        Assert.assertTrue((resultLeft == param) &&
+                (resultRight == param) &&
+                (resultUp == param) &&
+                (resultDown == param));
+
+        // throw new PendingException();
+    }
+
+
+    @Then("^at least one method will return \"([^\"]*)\"$")
+    public void atLeastOneMethodWillReturn(String arg0) throws Throwable {
+        boolean param = Boolean.valueOf(arg0);
+        Assert.assertTrue((resultLeft == param) ||
+                (resultRight == param) ||
+                (resultUp == param) ||
+                (resultDown == param));
     }
 }
 
