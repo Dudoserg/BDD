@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
 
@@ -49,4 +51,8 @@ public class Game {
     }
 
 
+    public int[] findFreePlace() {
+        //todo
+        return new int[]{1,1};
+    }
 }
