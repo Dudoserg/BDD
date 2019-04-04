@@ -52,13 +52,6 @@ Feature: gamesina
     Given  I have my Game class with param 4
     When I call 'rand' method 1000000 times in the range from 0 to 10
     Then The probability of each generated number should be 1 to 10 and epsilon 1 to 100
-##Left
-#  Scenario:
-#    Given  I have my Game class with param 4
-#    When I read matrix from "matrix_1.txt"
-#    And I set the game matrix in accordance with the read matrix
-#    And I call 'left' method
-#    Then the matrix must match the matrix from the file "matrix_1_left.txt"
 #test read set get
   Scenario:
     Given  I have my Game class with param 4
@@ -66,3 +59,10 @@ Feature: gamesina
     And I set the game matrix in accordance with the read matrix
     And I call 'getArr'
     Then the matrix must match the matrix from the file "matrix_1.txt"
+#Left
+  Scenario:
+    Given  I have my Game class with param 4
+    When I read matrix from "matrix_1.txt"
+    And I set the game matrix in accordance with the read matrix
+    And I call 'left' method
+    Then the matrix must match the matrix from the file "matrix_1_left.txt"

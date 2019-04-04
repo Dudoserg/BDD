@@ -272,5 +272,12 @@ int matrixGetArr[][];
         Assert.assertArrayEquals(this.matrixRead, this.matrixGetArr);
        // throw new PendingException();
     }
+
+
+
+//#left
+    @And("^I call 'left' method$")
+    public void iCallLeftMethod() {
+    }
 }
 
