@@ -152,4 +152,8 @@ public class Game {
             for(int j = 0 ; j < size; j++)
                 this.array_inactive[i][j] = 0;
     }
+
+    public int getElemInArrayInactive(int i, int j) {
+        return this.array_inactive[i][j];
+    }
 }
