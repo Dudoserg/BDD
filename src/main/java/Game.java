@@ -99,7 +99,20 @@ public class Game {
      * @return массив int. Первый элемент - строка, второй элемент столбец. Нумерация начинается с 0;
      */
     public int[] findFreePlace() {
-        //todo
-        return new int[]{1,1};
+        ArrayList<ArrayList<Integer>> freePlace = new ArrayList<>();
+        for(int i = 0 ; i < this.size; i++){
+            for(int j = 0 ; j < this.size; j++){
+                if(this.arr[i][j] == 0){
+                    ArrayList<Integer> tmp = new ArrayList<>();
+                    tmp.add(i);
+                    tmp.add(j);
+                    freePlace.add( tmp);
+                }
+            }
+        }
+        int sizeFreePlace = freePlace.size();
+        //int rand = this.rand(0, sizeFreePlace);
+        int rand = new Random().nextInt(freePlace.size());
+        return new int[]{freePlace.get(rand).get(0), freePlace.get(rand).get(1)};
     }
 }
