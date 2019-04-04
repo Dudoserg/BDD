@@ -211,6 +211,66 @@ int resultGetElem;
         }
     }
 
+//# getARr
+int matrixRead[][];
+int matrixGetArr[][];
+    public int [][] readMatrix(String nameFile) throws URISyntaxException {
+        URL resource = Main.class.getResource("matrix/" + nameFile);
+        System.out.println(Paths.get(resource.toURI()).toFile());
 
+        int matrix[][] = new int [this.game.getSize()][this.game.getSize()];
+
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(Paths.get(resource.toURI()).toUri()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String line = new String();
+        String[] str;
+
+        int indexLine = 0;
+        while ( scanner.hasNextLine()){
+            line = scanner.nextLine();
+            // System.out.println(line);
+            final int[] indexJ = {0};
+            int mas[] = Arrays.stream( line.split(" ")) .mapToInt(Integer::parseInt).toArray();
+            for(int i = 0 ; i < mas.length; i++){
+                matrix[indexLine][i] = mas[i];
+            }
+            indexLine++;
+        }
+        return matrix;
+    }
+
+    @When("^I read matrix from \"([^\"]*)\"$")
+    public void iReadMatrixFrom(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        this.matrixRead = this.readMatrix(arg0);
+       // throw new PendingException();
+    }
+
+    @And("^I set the game matrix in accordance with the read matrix$")
+    public void iSetTheGameMatrixInAccordanceWithTheReadMatrix() {
+        for(int i = 0 ; i < matrixRead.length; i++){
+            for(int j = 0 ; j < matrixRead[i].length; j++){
+                this.game.setElem(i,j, matrixRead[i][j]);
+            }
+        }
+    }
+
+
+    @And("^I call 'getArr'$")
+    public void iCallGetArr() {
+        this.matrixGetArr = this.game.getArr();
+    }
+
+    @Then("^the matrix must match the matrix from the file \"([^\"]*)\"$")
+    public void theMatrixMustMatchTheMatrixFromTheFile(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        Assert.assertArrayEquals(this.matrixRead, this.matrixGetArr);
+       // throw new PendingException();
+    }
 }
 
