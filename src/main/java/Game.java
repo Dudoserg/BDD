@@ -156,7 +156,20 @@ public class Game {
         }
         return flagMotion;
     }
-
+    /**
+     * Сдвиг матрицы вверх
+     */
+    public boolean up() {
+        this.clearArray_inactive();
+        boolean flagMotion = false;
+        for(int i = 0 ; i < this.size; i++){
+            for(int j = 0 ; j < this.size ; j++){
+                if(  this.motionElem(-1,0, i, j))
+                    flagMotion = true;
+            }
+        }
+        return flagMotion;
+    }
 
     public void setElemInArrayInactive(int i, int j, int i1) {
         this.array_inactive[i][j] = i1;
