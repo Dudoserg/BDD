@@ -50,7 +50,7 @@ public class Game {
         this.initialize();
     }
 
-    private void initialize(){
+    public void initialize(){
         this.arr = new int[this.size][this.size];
 
         for(int i = 0 ; i < size; i++)

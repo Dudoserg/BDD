@@ -278,7 +278,7 @@ int matrixGetArr[][];
 //#left
     @And("^I call 'left' method$")
     public void iCallLeftMethod() {
-        this.game.left();
+        boolean flag = this.game.left();
     }
 
 
@@ -338,6 +338,16 @@ int matrixGetArr[][];
     @And("^I call 'down' method$")
     public void iCallDownMethod() {
         this.game.down();
+    }
+
+
+    @Then("^The result of 'left' method should be \"([^\"]*)\"$")
+    public void theResultOfLeftMethodShouldBe(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        boolean result = this.game.left();
+        boolean param = Boolean.valueOf(arg0);
+        Assert.assertEquals(result, param );
+        //throw new PendingException();
     }
 }
 

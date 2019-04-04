@@ -182,3 +182,12 @@ Feature: gamesina
     And I call 'getArr'
     # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
     Then the matrix must match the matrix from the file "matrix_3_down.txt"
+#GameOver
+  Scenario:
+    Given  I have my Game class with param 4
+    When I read matrix from "matrix_end.txt"
+    And I set the game matrix in accordance with the read matrix
+    # двигаем поле влево
+    And I call 'left' method
+    # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
+    Then The result of 'left' method should be "false"
