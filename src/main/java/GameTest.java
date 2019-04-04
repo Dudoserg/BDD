@@ -299,6 +299,16 @@ int matrixGetArr[][];
 
     @Then("^all array elements are (\\d+)$")
     public void allArrayElementsAre(int arg0) {
+        boolean flagNotZero = false;
+        for (int i = 0 ; i < this.game.getSize(); i++){
+            for(int j = 0 ; j < this.game.getSize(); j++){
+               if( this.game.getElemInArrayInactive(i,j) != 0){
+                   flagNotZero = true;
+                   break;
+               }
+            }
+        }
+        Assert.assertFalse(flagNotZero);
     }
 
 }
