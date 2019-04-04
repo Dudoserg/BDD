@@ -72,3 +72,9 @@ Feature: gamesina
     And I call 'getArr'
     # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
     Then the matrix must match the matrix from the file "matrix_1_left.txt"
+#ClearArray_inactive
+  Scenario:
+    Given  I have my Game class with param 4
+    When I fill 'clearArray' the array with random numbers
+    And i clear the array
+    Then all array elements are 0
