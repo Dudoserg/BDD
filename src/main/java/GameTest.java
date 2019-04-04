@@ -135,7 +135,9 @@ int resultGetElem;
         this.resultFindFreePlace = new ArrayList<>();
         for(int i = 0 ; i < 10000; i++){
             int result[] = game.findFreePlace();
+            this.resultFindFreePlace.add(result);
         }
+
     }
 
     @Then("^The result must not contain an element with index (\\d+) (\\d+)$")
@@ -148,6 +150,28 @@ int resultGetElem;
             }
         }
         Assert.assertFalse(flagContain);
+    }
+//#findFreePlace2
+    @When("^I have initialized all the elements of the matrix except the element with the index (\\d+) (\\d+)$")
+    public void iHaveInitializedAllTheElementsOfTheMatrixExceptTheElementWithTheIndex(int arg0, int arg1) {
+        for(int i = 0; i < this.game.getSize(); i++){
+            for(int j = 0 ; j < this.game.getSize(); j++){
+                this.game.setElem(i,j, 2 );
+            }
+        }
+        this.game.setElem(arg0,arg1,0);
+    }
+
+    @Then("^The result should always return an item with index (\\d+) (\\d+)$")
+    public void theResultShouldAlwaysReturnAnItemWithIndex(int arg0, int arg1) {
+        boolean flagAnotherElem = false;
+        for(int i = 0 ; i < resultFindFreePlace.size(); i++){
+            if(this.resultFindFreePlace.get(i)[0] != arg0 || this.resultFindFreePlace.get(i)[1] != arg1){
+                flagAnotherElem = true;
+                break;
+            }
+        }
+        Assert.assertFalse(flagAnotherElem);
     }
 }
 
