@@ -142,6 +142,20 @@ public class Game {
         return flagMotion;
     }
 
+    /**
+     * Сдвиг матрицы вправо
+     */
+    public boolean right() {
+        this.clearArray_inactive();
+        boolean flagMotion = false;
+        for(int j = this.size ; j >= 0; j--){
+            for(int i = 0 ; i < this.size ; i++){
+                if( this.motionElem(0,1, i, j) )
+                    flagMotion = true;
+            }
+        }
+        return flagMotion;
+    }
 
 
     public void setElemInArrayInactive(int i, int j, int i1) {
