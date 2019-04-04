@@ -96,7 +96,16 @@ public class GameTest {
         Assert.assertEquals(this.gameSize, arg0);
     }
 
+int [][] gameMatrix;
+    @When("^I get array from Game$")
+    public void iGetArrayFromGame() {
+        this.gameMatrix = this.game.getArr();
+    }
 
+    @Then("^The array should be null$")
+    public void theArrayShouldBeNull() {
+        Assert.assertNotNull( this.gameMatrix );
 
+    }
 }
 
