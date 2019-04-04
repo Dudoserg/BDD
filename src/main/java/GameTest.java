@@ -311,5 +311,10 @@ int matrixGetArr[][];
         Assert.assertFalse(flagNotZero);
     }
 
+
+    @And("^I call 'motionElem' method with param (\\d+) -(\\d+)$")
+    public void iCallMotionElemMethodWithParam(int rowDirection, int columnDirection) {
+        game.motionElem(rowDirection, columnDirection, 0, 0);
+    }
 }
 
