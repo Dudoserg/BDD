@@ -47,4 +47,6 @@ public class Game {
     public int getElem(int indexI, int indexJ) {
         return this.arr[indexI][indexJ];
     }
+
+
 }

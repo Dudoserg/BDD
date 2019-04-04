@@ -127,5 +127,27 @@ int resultGetElem;
         Assert.assertEquals(this.resultGetElem , elem);
     }
 
+
+//#findFreePlace
+    ArrayList<int[]> resultFindFreePlace;
+    @And("^I call 'findFreePlace' method (\\d+) times$")
+    public void iCallFindFreePlaceMethodTimes(int iteration) {
+        this.resultFindFreePlace = new ArrayList<>();
+        for(int i = 0 ; i < 10000; i++){
+            int result[] = game.findFreePlace();
+        }
+    }
+
+    @Then("^The result must not contain an element with index (\\d+) (\\d+)$")
+    public void theResultMustNotContainAnElementWithIndex(int indexI, int indexJ) {
+        boolean flagContain = false;
+        for(int i = 0 ; i < resultFindFreePlace.size(); i++){
+            if(this.resultFindFreePlace.get(i)[0] == indexI && this.resultFindFreePlace.get(i)[1] == indexJ){
+                flagContain = true;
+                break;
+            }
+        }
+        Assert.assertFalse(flagContain);
+    }
 }
 

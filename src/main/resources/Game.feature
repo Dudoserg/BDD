@@ -40,4 +40,4 @@ Feature: gamesina
     Given  I have my Game class with param 4
     When I set elem 4 with index 0 0
     And I call 'findFreePlace' method 100000 times
-    Then Еhe result must not contain an element with index 0 0
+    Then The result must not contain an element with index 0 0
