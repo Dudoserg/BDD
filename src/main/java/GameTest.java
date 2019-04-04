@@ -323,5 +323,10 @@ int matrixGetArr[][];
         game.motionElem(rowDirection, columnDirection, arg2, arg3);
         //System.out.println();
     }
+
+    @And("^I call 'right' method$")
+    public void iCallRightMethod() {
+        this.game.right();
+    }
 }
 
