@@ -334,5 +334,10 @@ int matrixGetArr[][];
         this.game.up();
 
     }
+
+    @And("^I call 'down' method$")
+    public void iCallDownMethod() {
+        this.game.down();
+    }
 }
 
