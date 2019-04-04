@@ -287,7 +287,6 @@ int matrixGetArr[][];
     public void iFillClearArrayTheArrayWithRandomNumbers() {
         for (int i = 0 ; i < this.game.getSize(); i++){
             for(int j = 0 ; j < this.game.getSize(); j++){
-
                 this.game.setElemInArrayInactive(i,j, (int)(Math.random() * 2));
             }
         }
@@ -295,7 +294,7 @@ int matrixGetArr[][];
 
     @And("^i clear the array$")
     public void iClearTheArray() {
-
+        this.game.clearArray_inactive();
     }
 
     @Then("^all array elements are (\\d+)$")
