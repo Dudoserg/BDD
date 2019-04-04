@@ -105,7 +105,6 @@ int [][] gameMatrix;
     @Then("^The array should be null$")
     public void theArrayShouldBeNull() {
         Assert.assertNotNull( this.gameMatrix );
-
     }
 }
 

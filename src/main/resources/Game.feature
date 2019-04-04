@@ -29,3 +29,9 @@ Feature: gamesina
     Given  I have my Game class with param 4
     When I get array from Game
     Then The array should be null
+#setElem #getElem
+  Scenario:
+    Given  I have my Game class with param 4
+    When I set elem 4 with index 0 0
+    And I get elem with index 0 0
+    Then The result getElem should be 4
