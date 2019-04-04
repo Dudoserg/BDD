@@ -314,7 +314,8 @@ int matrixGetArr[][];
 
     @And("^I call 'motionElem' method with param (\\d+) -(\\d+)$")
     public void iCallMotionElemMethodWithParam(int rowDirection, int columnDirection) {
-        game.motionElem(rowDirection, columnDirection, 0, 0);
+        game.motionElem(rowDirection, -1, 0, 0);
+        System.out.println();
     }
 }
 

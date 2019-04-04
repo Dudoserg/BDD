@@ -157,14 +157,37 @@ public class Game {
         return this.array_inactive[i][j];
     }
 
-    public boolean motionElem(int rowDirection, int columnDirection, int i, int i1) {
-        // todo
-        this.arr = new int [][]{
-                {16,8,0,0},
-                {2,0,0,0},
-                {4,0,0,0},
-                {0,0,0,0},
-        };
-        return true;
+    public boolean motionElem(int vectX, int vectY, int i, int j) {
+        try {
+            if(this.arr[i][j] == 0){        //Если сдвигаемый элемент равен нулю, то ничего не делаем
+                return false;
+            }
+            // Если в стороне сдвига пустой элемент
+            if(this.arr[i + vectX][j + vectY] == 0){
+                this.arr[i + vectX][j + vectY] = this.arr[i][j]; // Присваиваем пустому элементу значение текущего
+                this.arr[i][j] = 0;                         // Текущий элемент теперь равен нулю
+                // Теперь опять двигаем элемент(теперь уже под новым индексом) Мб он еще сдвинется
+                this.motionElem(vectX, vectY, i + vectX, j + vectY);
+                return true;
+            }
+            // Если равны, и элемет в стороне сдвига активен, то сдвигаем
+            if(this.arr[i + vectX][j + vectY] == this.arr[i][j]  && this.array_inactive[i + vectX][j + vectY] == 0){
+
+                // Суммируем элементы, и присваиваем значение элементу в сторону которого идет сдвиг
+                this.arr[i + vectX][j + vectY] = this.add( this.arr[i + vectX][j + vectY],  this.arr[i][j ]);
+                // Текущий элемент теперь равен нулю
+                this.arr[i][j] = 0;
+
+                // Делаем элемент, к которому прибавили число неактивным. ДАЛЕЕ ОН НЕ МОЖЕТ ПРИНЯТЬ УЧАСТИЕ В СЛОЖЕНИИ С ДРУГИМИ ЧИСЛАМИ
+                this.array_inactive[i + vectX][j + vectY] = 1;
+                return true;
+            }
+            return false;
+
+
+        }catch (ArrayIndexOutOfBoundsException ex){
+            return false;
+
+        }
     }
 }
