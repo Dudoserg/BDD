@@ -174,14 +174,31 @@ int resultGetElem;
         Assert.assertFalse(flagAnotherElem);
     }
 
-
+//#rand
+    int resultRand[];
+    int countIterationRand;
     @When("^I call 'rand' method (\\d+) times in the range from (\\d+) to (\\d+)$")
-    public void iCallRandMethodTimesInTheRangeFromTo(int arg0, int arg1, int arg2) {
-        
+    public void iCallRandMethodTimesInTheRangeFromTo(int iteration, int min, int max) {
+        this.resultRand = new int[max - min];
+        countIterationRand = iteration;
+        for(int i = 0; i < countIterationRand; i++){
+            resultRand[game.rand(0,10)]++;
+        }
     }
 
+
+
     @Then("^The probability of each generated number should be (\\d+) to (\\d+) and epsilon (\\d+) to (\\d+)$")
-    public void theProbabilityOfEachGeneratedNumberShouldBeToAndEpsilonTo(int arg0, int arg1, int arg2, int arg3) {
+    public void theProbabilityOfEachGeneratedNumberShouldBeToAndEpsilonTo(int arg0, int arg1, int eps1, int eps2) {
+        double eps = (double)eps1 / eps2;
+        double prob = (double) arg0 / arg1;
+        for(int i = 0 ; i < 10; i++){
+//            double res = ((double) resultRand[i] / countIterationRand);
+//            double first = prob - eps;
+//            double second = prob + eps;
+            Assert.assertTrue(( ((double) resultRand[i] / countIterationRand) > prob - eps)
+                    && (  ((double) resultRand[i] / countIterationRand) < prob + eps) );
+        }
     }
 }
 
