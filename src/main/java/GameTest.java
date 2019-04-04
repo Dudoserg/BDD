@@ -288,7 +288,7 @@ int matrixGetArr[][];
         for (int i = 0 ; i < this.game.getSize(); i++){
             for(int j = 0 ; j < this.game.getSize(); j++){
 
-                this.game.setElemInClearArr(i,j, (int)(Math.random() * 2));
+                this.game.setElemInArrayInactive(i,j, (int)(Math.random() * 2));
             }
         }
     }

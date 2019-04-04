@@ -141,4 +141,9 @@ public class Game {
         return true;
     }
 
+
+
+    public void setElemInArrayInactive(int i, int j, int i1) {
+        this.array_inactive[i][j] = i1;
+    }
 }
