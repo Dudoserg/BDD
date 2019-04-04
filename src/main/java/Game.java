@@ -116,5 +116,7 @@ public class Game {
         return new int[]{freePlace.get(rand).get(0), freePlace.get(rand).get(1)};
     }
 
-
+    public int rand(int from, int to) {
+        return from + (int) (Math.random() * to);
+    }
 }
