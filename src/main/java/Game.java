@@ -128,4 +128,8 @@ public class Game {
     public int rand(int from, int to) {
         return from + (int) (Math.random() * to);
     }
+
+
+
+
 }

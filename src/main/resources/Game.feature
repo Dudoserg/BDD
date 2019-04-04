@@ -64,5 +64,11 @@ Feature: gamesina
     Given  I have my Game class with param 4
     When I read matrix from "matrix_1.txt"
     And I set the game matrix in accordance with the read matrix
+    # читаем и запоминаем результирующую матрицу
+    And I read matrix from "matrix_1_left.txt"
+    # двигаем поле влево
     And I call 'left' method
+    # получаем матрицу из игрового класса
+    And I call 'getArr'
+    # сравниваем считанную матрицу из файла и матрицу полученную из игрового поля
     Then the matrix must match the matrix from the file "matrix_1_left.txt"

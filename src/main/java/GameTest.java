@@ -278,7 +278,7 @@ int matrixGetArr[][];
 //#left
     @And("^I call 'left' method$")
     public void iCallLeftMethod() {
-
+        this.game.left();
     }
 }
 
