@@ -35,3 +35,9 @@ Feature: gamesina
     When I set elem 4 with index 0 0
     And I get elem with index 0 0
     Then The result getElem should be 4
+#findFreePlace
+  Scenario:
+    Given  I have my Game class with param 4
+    When I set elem 4 with index 0 0
+    And I call 'findFreePlace' method 100000 times
+    Then Еhe result must not contain an element with index 0 0
