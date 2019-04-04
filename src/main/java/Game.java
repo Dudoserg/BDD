@@ -131,14 +131,15 @@ public class Game {
 
 
     public boolean left() {
-        // todo
-        this.arr = new int [][]{
-                {16,8,0,0},
-                {2,0,0,0},
-                {4,0,0,0},
-                {0,0,0,0},
-        };
-        return true;
+        this.clearArray_inactive();
+        boolean flagMotion = false;
+        for(int j = 0 ; j < this.size; j++){
+            for(int i = 0 ; i < this.size ; i++){
+                if( this.motionElem(0,-1, i, j))
+                    flagMotion = true;
+            }
+        }
+        return flagMotion;
     }
 
 
