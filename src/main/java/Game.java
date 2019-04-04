@@ -156,4 +156,15 @@ public class Game {
     public int getElemInArrayInactive(int i, int j) {
         return this.array_inactive[i][j];
     }
+
+    public boolean motionElem(int rowDirection, int columnDirection, int i, int i1) {
+        // todo
+        this.arr = new int [][]{
+                {16,8,0,0},
+                {2,0,0,0},
+                {4,0,0,0},
+                {0,0,0,0},
+        };
+        return true;
+    }
 }
