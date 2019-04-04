@@ -280,5 +280,27 @@ int matrixGetArr[][];
     public void iCallLeftMethod() {
         this.game.left();
     }
+
+
+///////////////////////////////////////////
+    @When("^I fill 'clearArray' the array with random numbers$")
+    public void iFillClearArrayTheArrayWithRandomNumbers() {
+        for (int i = 0 ; i < this.game.getSize(); i++){
+            for(int j = 0 ; j < this.game.getSize(); j++){
+
+                this.game.setElemInClearArr(i,j, (int)(Math.random() * 2));
+            }
+        }
+    }
+
+    @And("^i clear the array$")
+    public void iClearTheArray() {
+
+    }
+
+    @Then("^all array elements are (\\d+)$")
+    public void allArrayElementsAre(int arg0) {
+    }
+
 }
 
