@@ -1,3 +1,4 @@
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -193,12 +194,32 @@ int resultGetElem;
         double eps = (double)eps1 / eps2;
         double prob = (double) arg0 / arg1;
         for(int i = 0 ; i < 10; i++){
-//            double res = ((double) resultRand[i] / countIterationRand);
-//            double first = prob - eps;
-//            double second = prob + eps;
             Assert.assertTrue(( ((double) resultRand[i] / countIterationRand) > prob - eps)
                     && (  ((double) resultRand[i] / countIterationRand) < prob + eps) );
         }
+    }
+
+//#Left
+    @When("^I read matrix from \"([^\"]*)\"$")
+    public void iReadMatrixFrom(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I set the game matrix in accordance with the read matrix$")
+    public void iSetTheGameMatrixInAccordanceWithTheReadMatrix() {
+
+    }
+
+    @And("^I call 'left' method$")
+    public void iCallLeftMethod() {
+
+    }
+
+    @Then("^the matrix must match the matrix from the file \"([^\"]*)\"$")
+    public void theMatrixMustMatchTheMatrixFromTheFile(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }
 

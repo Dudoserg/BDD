@@ -7,6 +7,7 @@ public class Game {
 
     private int [][] arr;
 
+    private int array_inactive[][];
 
     /**
      * Суммирование двух чисел
@@ -52,6 +53,15 @@ public class Game {
 
     private void initialize(){
         this.arr = new int[this.size][this.size];
+
+        for(int i = 0 ; i < size; i++)
+            for(int j = 0 ; j < size; j++)
+                this.arr[i][j] = 0;
+
+        this.array_inactive = new int[size][size];
+        for(int i = 0 ; i < size; i++)
+            for(int j = 0 ; j < size; j++)
+                this.array_inactive[i][j] = 0;
     }
 
 
