@@ -328,5 +328,11 @@ int matrixGetArr[][];
     public void iCallRightMethod() {
         this.game.right();
     }
+
+    @And("^I call 'up' method$")
+    public void iCallUpMethod() {
+        this.game.up();
+
+    }
 }
 
