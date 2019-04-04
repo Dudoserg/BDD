@@ -5,7 +5,19 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class GameTest {
     Game game ;
@@ -199,27 +211,6 @@ int resultGetElem;
         }
     }
 
-//#Left
-    @When("^I read matrix from \"([^\"]*)\"$")
-    public void iReadMatrixFrom(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 
-    @And("^I set the game matrix in accordance with the read matrix$")
-    public void iSetTheGameMatrixInAccordanceWithTheReadMatrix() {
-
-    }
-
-    @And("^I call 'left' method$")
-    public void iCallLeftMethod() {
-
-    }
-
-    @Then("^the matrix must match the matrix from the file \"([^\"]*)\"$")
-    public void theMatrixMustMatchTheMatrixFromTheFile(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 }
 
