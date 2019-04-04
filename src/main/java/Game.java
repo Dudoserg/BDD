@@ -16,8 +16,7 @@ public class Game {
      * @return сумма двух чисел
      */
     public int add(int firstNum, int secondNum) {
-        // todo
-        return 4;
+        return firstNum + secondNum;
     }
 
 
